@@ -1,1 +1,1 @@
-# Reminders-App
+# PICKLEBALL-TRAINING-SESSION

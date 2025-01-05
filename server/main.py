@@ -4,9 +4,25 @@ from routes.Home import Home
 from routes.Product import Product
 from routes.ScheduleAppointment import Schedule
 from routes.About import About
+from models import db, Appointment
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 app = Flask(__name__)
+
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db.init_app(app)
+
+with app.app_context():
+    db.create_all()
+
 cors = CORS(app, origins='*')
+
+
 
 app.register_blueprint(Home)
 app.register_blueprint(Product)

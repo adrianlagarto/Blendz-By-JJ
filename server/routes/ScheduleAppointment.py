@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request
+from models import db, Appointment
 
 """
 change this to Register routes....
@@ -13,7 +14,7 @@ def schedule():
     # Scheduling Appointments 
     if request.method == 'POST':
         if not request.is_json:
-            return jsonify({"error": "Request body must be JSON failed Post Req 400"}), 400
+            return jsonify({"error": "Request body must be JSON"}), 400
         data = request.get_json()
         first_name = data.get('first_name')
         last_name = data.get('last_name')
@@ -21,11 +22,23 @@ def schedule():
         message = data.get('message')
         price = data.get('price')
         date = data.get('date')
-        time = data.get('time')      
+        time = data.get('time')
         
-        # Handle the form data (e.g., send an email)
+        # Create a new Appointment instance
+        new_appointment = Appointment(
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            message=message,
+            price=price,
+            date=date,
+            time=time
+        )
         
-
+        # Add and commit the new appointment to the database
+        db.session.add(new_appointment)
+        db.session.commit()
+        
         return jsonify({"message": "Appointment Scheduled!"}), 200
     
     # Admin control the availability and price
@@ -41,7 +54,7 @@ def schedule():
         return jsonify({
             "training_level": "Advance",
             "date": "2025-01-03",
-            "time": "10:00",
+            "time": "10:00",    
             "price": 100,
             "message": "Get the options for the time, date for the session!"
         }), 200  

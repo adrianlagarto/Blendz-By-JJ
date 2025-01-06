@@ -17,6 +17,6 @@ def about():
         return jsonify({"message": "About routes nav"}), 200
       
       
-      
+    
       
     return jsonify({"message": "About routes nav!"}), 200

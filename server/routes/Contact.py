@@ -16,7 +16,7 @@ def contact():
         message = data.get('message')
         
         # save on db later
-        
+      
         return jsonify({"message": "Message received!"}), 200
     
     

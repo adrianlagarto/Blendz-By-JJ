@@ -1,15 +1,20 @@
 from flask import Blueprint, jsonify, request
 from models import db, Appointment
 
-"""
-change this to Register routes....
-"""
-
-
 Schedule = Blueprint('Schedule', __name__)
 
 @Schedule.route('/Schedule', methods=['GET','POST'])
 def schedule():
+    """ 
+    select a list of service
+    select appointment time/date
+    enter phone number #
+    first, last name and email
+    notes
+    stripe / payment
+    Cancellation policy agreement
+    Book appointment
+    """
     
     # Scheduling Appointments 
     if request.method == 'POST':
@@ -50,7 +55,7 @@ def schedule():
         # date = data.get('date')
         # time = data.get('time')
         # price = data.get('price')
-
+        
         return jsonify({
             "training_level": "Advance",
             "date": "2025-01-03",

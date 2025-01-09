@@ -25,6 +25,7 @@ function App() {
 
   return (
     <>
+      {/*Add navbar to all routes*/}
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />

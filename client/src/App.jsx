@@ -4,6 +4,12 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import axios from "axios";
 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Service from "./pages/Service";
+import Contact from "./pages/Contact";
+
 function App() {
   const [count, setCount] = useState(0);
   const [array, setArray] = useState([]);
@@ -19,7 +25,16 @@ function App() {
 
   return (
     <>
-      <div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/service" element={<Service />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </Router>
+
+      {/* <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -43,7 +58,7 @@ function App() {
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
-      </p>
+      </p> */}
     </>
   );
 }

@@ -15,19 +15,19 @@ app = Flask(__name__)
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db.init_app(app)
+# db.init_app(app)
 
-with app.app_context():
-    db.create_all()
+# with app.app_context():
+#     db.create_all()
 
 cors = CORS(app, origins='*')
 
 
 
 app.register_blueprint(Home)
-app.register_blueprint(Product)
+app.register_blueprint(Product, url_prefix='/')
 app.register_blueprint(Schedule)
-app.register_blueprint(About)
+app.register_blueprint(About, url_prefix='/')
 
 @app.route("/api/users", methods=['GET'])
 def users():

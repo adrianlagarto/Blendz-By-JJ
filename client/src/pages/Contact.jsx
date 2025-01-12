@@ -2,6 +2,7 @@ import React from "react";
 
 const Contact = () => {
   return (
+    // Create Contact form post req
     <div>
       <h1>Contact Page</h1>
       <p>Get in touch with us through this page.</p>

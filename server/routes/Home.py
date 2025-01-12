@@ -19,10 +19,21 @@ def home():
         
         return jsonify({"message": "Message received!"}), 200
     
-    if request.method == "GET":
-        custom_message = request.args.get('message', 'No message provided')
+    if request.method == 'GET':
         
-        return jsonify({"message": custom_message}), 200
+        return jsonify({
+            "services": [
+            {"availability": {
+                            "Monday": "8 AM - 5 PM",
+                            "Tuesday": "8 AM - 5 PM",
+                            "Wednesday": "8 AM - 5 PM",
+                            "Thursday": "8 AM - 5 PM",
+                            "Friday": "8 AM - 5 PM",
+                            "Saturday": "Off",
+                            "Sunday": "Off"
+                        }}
+          ]
+        }), 200
     
     return jsonify({"message": "Home Apis!"}), 200
     

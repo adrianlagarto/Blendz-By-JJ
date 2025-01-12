@@ -8,7 +8,7 @@ const Service = () => {
   const fetchServices = async () => {
     try {
       const response = await axios.get("http://127.0.0.1:5070/Service");
-      setServices(response.data);
+      setServices(response.data.services); // Access the 'services' array
     } catch (error) {
       console.error("Error fetching services:", error);
     }
@@ -23,10 +23,11 @@ const Service = () => {
       <h1>Service Page</h1>
       <p>Discover our services here.</p>
       <ul>
-        {services.map((service) => (
-          <li key={service.id}>
-            <h2>{service.name}</h2>
-            <p>{service.description}</p>
+        {services.map((service, index) => (
+          <li key={index}>
+            <h2>{service.Service_type}</h2>
+            <p>Price: ${service.Price}</p>
+            <p>{service.Description}</p>
           </li>
         ))}
       </ul>

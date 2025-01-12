@@ -4,6 +4,7 @@ from routes.Home import Home
 from routes.Product import Product
 from routes.ScheduleAppointment import Schedule
 from routes.About import About
+from routes.Service import Service
 from models import db, Appointment
 from dotenv import load_dotenv
 import os
@@ -28,6 +29,7 @@ app.register_blueprint(Home)
 app.register_blueprint(Product, url_prefix='/')
 app.register_blueprint(Schedule)
 app.register_blueprint(About, url_prefix='/')
+app.register_blueprint(Service)
 
 @app.route("/api/users", methods=['GET'])
 def users():

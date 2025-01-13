@@ -5,7 +5,12 @@ import "./Navbar.scss"; // Import the SCSS file
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <div className="navbar__logo">MyLogo</div>
+      <div className="navbar__logo">
+        {" "}
+        <Link to="/" className="navbar__link">
+          MyLogo
+        </Link>
+      </div>
       <ul className="navbar__menu">
         <li className="navbar__item">
           <Link to="/" className="navbar__link">

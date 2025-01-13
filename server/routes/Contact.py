@@ -4,6 +4,7 @@ Contact = Blueprint('Contact', __name__)
 
 @Contact.route('/Contact', methods=['GET','POST'])
 def contact():
+    
     # Contact Us Form
     if request.method == 'POST':
         if not request.is_json:
@@ -19,7 +20,9 @@ def contact():
       
         return jsonify({"message": "Message received!"}), 200
     
-    
+    # if request.method == 'Get':
+        
+    #     return jsonify({"message": "Get Rquest Contact routes received!"}), 200
     
       
-    return jsonify({"message": "Home Apis!"}), 200
+    return jsonify({"message": "Get Rquest Contact routes received!"}), 200

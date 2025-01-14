@@ -1,8 +1,10 @@
 from flask import Blueprint, jsonify, request
+from flask_login import login_required, current_user
 
 Service = Blueprint('Service', __name__)
 @Service.route('/Service', methods=['GET'])
 def service():
+  # modifiable by admin / Query the db
     if request.method == 'GET':
         return jsonify({
           "services": [
@@ -26,4 +28,12 @@ def service():
 
     return jsonify({"message": "About routes nav!"}), 200
   
+# @Service.route('/Service', methods=['POST'])
+# @login_required
   
+# @Service.route('/Service/<int:id>', methods=['PUT'])
+# @login_required
+
+# @Service.route('/Service/<int:id>', methods=['DELETE'])
+# @login_required
+

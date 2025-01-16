@@ -15,13 +15,14 @@ load_dotenv()
 
 app = Flask(__name__)
 
-# app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
-# db.init_app(app)
+db.init_app(app)
 
-# with app.app_context():
-#     db.create_all()
+with app.app_context():
+    db.create_all()
 
 cors = CORS(app, origins='*')
 

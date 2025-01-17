@@ -16,10 +16,13 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.username || !formData.password) {
+      setError("Please fill in both fields.");
+      return;
+    }
     try {
       const response = await axios.post("/login", formData);
       if (response.status === 200) {
-        // Redirect to admin dashboard or home page
         navigate("/admin/services");
       } else {
         setError(response.data.error);

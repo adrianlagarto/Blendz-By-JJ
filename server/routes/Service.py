@@ -1,39 +1,30 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
+from models import db, AdminService
 
 Service = Blueprint('Service', __name__)
+
 @Service.route('/Service', methods=['GET'])
-def service():
-  # modifiable by admin / Query the db
-    if request.method == 'GET':
-        return jsonify({
-          "services": [
-            {
-              "Service_type": "Cut",
-              "Price": 20,
-              "Description": "Traditional close cropped styles only which includes: fades and tapers starting at 1 or longer with light scissor work on top; comb overs; crew cuts; pompadours."
-            },
-            {
-              "Service_type": "Shave",
-              "Price": 15,
-              "Description": "Classic straight razor shave with hot towel treatment."
-            },
-            {
-              "Service_type": "Trim",
-              "Price": 10,
-              "Description": "Beard and mustache trim with precision shaping."
-            }
-          ]
-        }), 200
+def get_services():
+    services = Service.query.all()
+    services_list = [
+        {
+            "id": service.id,
+            "service_type": service.service_type,
+            "price": service.price,
+            "description": service.description
+        } for service in services
+    ]
+    return jsonify({"services": services_list}), 200
 
-    return jsonify({"message": "About routes nav!"}), 200
-  
-# @Service.route('/Service', methods=['POST'])
-# @login_required
-  
-# @Service.route('/Service/<int:id>', methods=['PUT'])
-# @login_required
+@Service.route('/Service/<int:id>', methods=['PUT'])
+@login_required
+def update_service(id):
+    if not current_user.is_admin:
+        return jsonify({"error": "Unauthorized"}), 403
 
-# @Service.route('/Service/<int:id>', methods=['DELETE'])
-# @login_required
-
+    data = request.get_json()
+    service = AdminService.query.get_or_404(id)
+    service.description = data.get('description', service.description)
+    db.session.commit()
+    return jsonify({"message": "Service updated!"}), 200

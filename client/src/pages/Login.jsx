@@ -21,7 +21,7 @@ const Login = () => {
       return;
     }
     try {
-      const response = await axios.post("/login", formData);
+      const response = await axios.post("/Login", formData);
       if (response.status === 200) {
         navigate("/admin/services");
       } else {

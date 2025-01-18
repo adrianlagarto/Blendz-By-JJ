@@ -10,6 +10,7 @@ from routes.About import About
 from routes.Service import Service
 from routes.Login import Login
 from routes.Contact import Contact
+from routes.Booknow import Booknow
 from models import db, User, Appointment, ContactForm, AdminService
 from dotenv import load_dotenv
 import os
@@ -39,6 +40,7 @@ app.register_blueprint(About, url_prefix='/')
 app.register_blueprint(Service)
 app.register_blueprint(Contact)
 app.register_blueprint(Login)
+app.register_blueprint(Booknow)
 
 @login_manager.user_loader
 def load_user(user_id):

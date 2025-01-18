@@ -5,7 +5,7 @@ from models import User
 
 Login = Blueprint('Login', __name__)
 
-@Login.route('/login', methods=['POST'])
+@Login.route('/Login', methods=['POST'])
 def login():
     data = request.get_json()
     username = data.get('username')

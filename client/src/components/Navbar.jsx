@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import BookNowButton from "./Booknowbutton.jsx"; // Import the BookNowButton component
 import "./Navbar.scss"; // Import the SCSS file
 
 const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar__logo">
-        {" "}
         <Link to="/" className="navbar__link">
           MyLogo
         </Link>
@@ -31,6 +31,9 @@ const Navbar = () => {
           <Link to="/contact" className="navbar__link">
             Contact
           </Link>
+        </li>
+        <li className="navbar__item">
+          <BookNowButton /> {/* Add the BookNowButton here */}
         </li>
       </ul>
     </nav>

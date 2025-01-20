@@ -4,7 +4,7 @@ const BookNow = () => {
   const [schedule, setSchedule] = useState([]);
 
   useEffect(() => {
-    fetch("/Booknow")
+    fetch("/booknow")
       .then((response) => response.json())
       .then((data) => setSchedule(data))
       .catch((error) => console.error("Error fetching schedule:", error));

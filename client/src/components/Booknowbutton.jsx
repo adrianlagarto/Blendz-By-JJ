@@ -5,7 +5,7 @@ const BookNowButton = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/Booknow");
+    navigate("/booknow");
   };
 
   return <button onClick={handleClick}>Book Now</button>;

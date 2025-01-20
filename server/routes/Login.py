@@ -1,11 +1,11 @@
 from flask import Blueprint, jsonify, request
-from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.security import check_password_hash
 from models import User
 
 Login = Blueprint('Login', __name__)
 
-@Login.route('/Login', methods=['POST'])
+@Login.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
     username = data.get('username')

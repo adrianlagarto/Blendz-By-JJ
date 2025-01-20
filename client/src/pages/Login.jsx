@@ -23,7 +23,6 @@ const Login = () => {
     try {
       const response = await axios.post("/Login", formData);
       if (response.status === 200) {
-        navigate("/admin/services");
       } else {
         setError(response.data.error);
       }

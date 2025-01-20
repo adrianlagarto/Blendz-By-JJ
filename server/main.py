@@ -59,15 +59,15 @@ admin.add_view(AdminModelView(User, db.session))
 admin.add_view(AdminModelView(Appointment, db.session))
 admin.add_view(AdminModelView(ContactForm, db.session))
 
-@app.route("/api/users", methods=['GET'])
-def users():
-    return jsonify({
-      "users": [
-        'qwerty',
-        'asdfg',
-        'zxcvb'
-      ]
-    })
+# @app.route("/api/users", methods=['GET'])
+# def users():
+#     return jsonify({
+#       "users": [
+#         'qwerty',
+#         'asdfg',
+#         'zxcvb'
+#       ]
+#     })
     
 if __name__ == "__main__":
     app.run(debug=True, port=5070)

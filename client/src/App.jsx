@@ -10,6 +10,7 @@ import About from "./pages/About";
 import Service from "./pages/Service";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
+import BookNow from "./pages/Booknow";
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <Route path="/service" element={<Service />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/booknow" element={<BookNow />} />
         </Routes>
       </Router>
 

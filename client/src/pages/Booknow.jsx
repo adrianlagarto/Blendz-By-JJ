@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const BookNow = () => {
   const [schedule, setSchedule] = useState([]);
 
   useEffect(() => {
-    fetch("/booknow")
-      .then((response) => response.json())
-      .then((data) => setSchedule(data))
-      .catch((error) => console.error("Error fetching schedule:", error));
+    const fetchSchedule = async () => {
+      try {
+        const response = await axios.get("http://127.0.0.1:5070/Booknow");
+        setSchedule(response.data);
+      } catch (error) {
+        console.error("Error fetching schedule:", error);
+      }
+    };
+
+    fetchSchedule();
   }, []);
 
   return (

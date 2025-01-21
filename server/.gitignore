@@ -9,3 +9,6 @@ __pycache__/
 
 # your_database_name.db
 database.db
+
+# demo
+server/create_admin.py

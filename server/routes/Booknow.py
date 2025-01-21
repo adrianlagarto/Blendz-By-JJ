@@ -8,7 +8,7 @@ schedule_data = [
     {"date": "2025-01-18", "time": "14:00", "price": 75},
 ]
 
-@Booknow.route('/Booknow', methods=['GET'])
+@Booknow.route('/booknow', methods=['GET'])
 def get_schedule():
     return jsonify(schedule_data)
 

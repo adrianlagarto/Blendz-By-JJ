@@ -21,8 +21,12 @@ const Login = () => {
       return;
     }
     try {
-      const response = await axios.post("/Login", formData);
+      const response = await axios.post(
+        "http://127.0.0.1:5070/login",
+        formData
+      );
       if (response.status === 200) {
+        navigate("/admin");
       } else {
         setError(response.data.error);
       }

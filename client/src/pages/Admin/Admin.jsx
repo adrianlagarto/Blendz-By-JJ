@@ -7,7 +7,7 @@ const Admin = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post("/logout");
+      await axios.post("http://127.0.0.1:5070/logout");
       navigate("/login");
     } catch (error) {
       console.error("Error logging out:", error);

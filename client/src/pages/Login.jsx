@@ -26,7 +26,11 @@ const Login = () => {
         formData
       );
       if (response.status === 200) {
-        navigate("/admin");
+        if (response.data.is_admin) {
+          navigate("/admin");
+        } else {
+          navigate("/");
+        }
       } else {
         setError(response.data.error);
       }

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import ContactForm from "/component/ContactForm";
+// import ContactForm from "./component
 
 const Contact = () => {
   return (
     <div>
       <h1>Contact Page</h1>
       <p>Get in touch with us through this page.</p>
-      <ContactForm />
+      {/* <ContactForm /> */}
     </div>
   );
 };

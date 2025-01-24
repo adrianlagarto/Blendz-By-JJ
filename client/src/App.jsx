@@ -13,6 +13,7 @@ import Login from "./pages/Login";
 import BookNow from "./pages/Booknow";
 import Admin from "./pages/Admin/Admin";
 import Navbar from "./components/Navbar";
+import PrivateRoute from './components/'
 
 function App() {
   const [count, setCount] = useState(0);
@@ -40,6 +41,12 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/booknow" element={<BookNow />} />
           <Route path="/admin" element={<Admin />} />
+          <Route
+            path="/admin"
+            element={
+              <PrivateRoute isAuthenticated={isAuthenticated} isAdmin={isAdmin}>
+              <Admin />
+          </PrivateRoute>
         </Routes>
       </Router>
 

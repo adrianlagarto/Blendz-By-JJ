@@ -2,12 +2,13 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.security import check_password_hash
 from models import User
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 
 Login = Blueprint('Login', __name__)
-CORS(Login)  # Enable CORS for this blueprint
+CORS(Login, resources={r"/*": {"origins": "*"}})  # Enable CORS for this blueprint
 
 @Login.route('/login', methods=['POST'])
+@cross_origin()  # Enable CORS for this route
 def login():
     data = request.get_json()
     username = data.get('username')
@@ -19,7 +20,14 @@ def login():
     return jsonify({"error": "Invalid credentials"}), 401
 
 @Login.route('/logout', methods=['POST'])
+@cross_origin()  # Enable CORS for this route
 @login_required
 def logout():
-    logout_user()
-    return jsonify({"message": "Logged out successfully"}), 200
+    try:
+        print(f"Logging out user: {current_user.username}")
+        logout_user()
+        print("User logged out successfully")
+        return jsonify({"message": "Logged out successfully"}), 200
+    except Exception as e:
+        print(f"Error during logout: {e}")
+        return jsonify({"error": "An error occurred during logout"}), 500

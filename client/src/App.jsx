@@ -3,6 +3,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import axios from "axios";
+import Footer from "./components/Footer";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
@@ -13,7 +14,6 @@ import Login from "./pages/Login";
 import BookNow from "./pages/Booknow";
 import Admin from "./pages/Admin/Admin";
 import Navbar from "./components/Navbar";
-import PrivateRoute from './components/'
 
 function App() {
   const [count, setCount] = useState(0);
@@ -41,14 +41,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/booknow" element={<BookNow />} />
           <Route path="/admin" element={<Admin />} />
-          <Route
-            path="/admin"
-            element={
-              <PrivateRoute isAuthenticated={isAuthenticated} isAdmin={isAdmin}>
-              <Admin />
-          </PrivateRoute>
         </Routes>
       </Router>
+
+      <Footer />
 
       {/* <div>
         <a href="https://vite.dev" target="_blank">

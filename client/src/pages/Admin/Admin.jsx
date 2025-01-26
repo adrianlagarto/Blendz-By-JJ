@@ -1,23 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
-const Admin = () => {
+const Admin = ({ handleLogout }) => {
   const navigate = useNavigate();
 
-  const handleLogout = async () => {
-    try {
-      await axios.post("http://127.0.0.1:5070/logout");
-      navigate("/login");
-    } catch (error) {
-      console.error("Error logging out:", error);
-    }
+  const handleLogoutClick = async () => {
+    await handleLogout();
+    navigate("http://localhost:5173/login");
   };
 
   return (
     <div>
       <h1>Admin Page</h1>
-      <button onClick={handleLogout}>Logout</button>
+      <button onClick={handleLogoutClick}>Logout</button>
     </div>
   );
 };

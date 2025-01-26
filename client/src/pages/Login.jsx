@@ -29,7 +29,7 @@ const Login = () => {
         if (response.data.is_admin) {
           navigate("/admin");
         } else {
-          navigate("/");
+          navigate("/"); // Redirect to a different page if the user is not an admin
         }
       } else {
         setError(response.data.error);

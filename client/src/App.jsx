@@ -14,19 +14,28 @@ import Login from "./pages/Login";
 import BookNow from "./pages/Booknow";
 import Admin from "./pages/Admin/Admin";
 import Navbar from "./components/Navbar";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [array, setArray] = useState([]);
-
-  const fetchAPI = async () => {
-    const res = await axios.get("http://127.0.0.1:5070/api/users");
-    setArray(res.data.users);
-  };
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    fetchAPI();
+    // Simulate authentication and admin check
+    setIsAuthenticated(true); // Set to true if the user is authenticated
+    setIsAdmin(true); // Set to true if the user is an admin
   }, []);
+
+  const handleLogout = async () => {
+    console.log("const_handleLogout");
+    try {
+      await axios.post("http://127.0.0.1:5070/logout");
+      setIsAuthenticated(false);
+      setIsAdmin(false);
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
+  };
 
   return (
     <>
@@ -41,6 +50,14 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/booknow" element={<BookNow />} />
           <Route path="/admin" element={<Admin />} />
+          <Route
+            path="/admin"
+            element={
+              <PrivateRoute isAuthenticated={isAuthenticated} isAdmin={isAdmin}>
+                <Admin handleLogout={handleLogout} />
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </Router>
 

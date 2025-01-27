@@ -6,7 +6,7 @@ const Admin = ({ handleLogout }) => {
 
   const handleLogoutClick = async () => {
     await handleLogout();
-    navigate("http://localhost:5173/login");
+    navigate("/logout"); // Navigate to the Logout page
   };
 
   return (

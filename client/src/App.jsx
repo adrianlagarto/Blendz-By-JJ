@@ -11,6 +11,7 @@ import About from "./pages/About";
 import Service from "./pages/Service";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
+import Logout from "./pages/Logout";
 import BookNow from "./pages/Booknow";
 import Admin from "./pages/Admin/Admin";
 import Navbar from "./components/Navbar";
@@ -33,7 +34,11 @@ function App() {
       setIsAuthenticated(false);
       setIsAdmin(false);
     } catch (error) {
-      console.error("Error logging out:", error);
+      if (!error.response) {
+        console.error("Network error:", error);
+      } else {
+        console.error("Error response:", error.response);
+      }
     }
   };
 
@@ -49,7 +54,6 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/booknow" element={<BookNow />} />
-          <Route path="/admin" element={<Admin />} />
           <Route
             path="/admin"
             element={
@@ -58,6 +62,7 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route path="/logout" element={<Logout />} />
         </Routes>
       </Router>
 

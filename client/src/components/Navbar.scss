@@ -1,9 +1,13 @@
 // Variables
-$primary-color: #3498db;
-$secondary-color: #2c3e50;
+$primary-color: #2c3e50;
+$secondary-color: #e74c3c;
 $font-color: #ffffff;
 $hover-color: lighten($secondary-color, 20%);
 $shadow-color: rgba(0, 0, 0, 0.1);
+$gradient-start: #2c3e50;
+$gradient-end: #34495e;
+$font-family: "Playfair Display", serif;
+$accent-color: #c0392b;
 
 // Navbar Styles
 .navbar {
@@ -11,14 +15,21 @@ $shadow-color: rgba(0, 0, 0, 0.1);
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: $primary-color;
+  background: linear-gradient(45deg, $gradient-start, $gradient-end);
   box-shadow: 0 4px 6px $shadow-color;
+  font-family: $font-family;
 
   &__logo {
     font-size: 1.5rem;
     font-weight: bold;
     color: $font-color;
     text-shadow: 1px 1px 2px darken($primary-color, 20%);
+    display: flex;
+    align-items: center;
+
+    i {
+      margin-right: 0.5rem;
+    }
   }
 
   &__menu {
@@ -36,13 +47,38 @@ $shadow-color: rgba(0, 0, 0, 0.1);
         font-size: 1rem;
         padding: 0.5rem 1rem;
         border-radius: 4px;
-        transition: background-color 0.3s, color 0.3s, transform 0.3s;
+        transition: background-color 0.3s, color 0.3s, transform 0.3s,
+          box-shadow 0.3s;
 
         &:hover {
           background-color: $hover-color;
           color: $primary-color;
           transform: scale(1.05);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+      }
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar__menu {
+    flex-direction: column;
+    width: 100%;
+
+    &__item {
+      margin: 0;
+      width: 100%;
+
+      &__link {
+        width: 100%;
+        text-align: center;
       }
     }
   }

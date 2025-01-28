@@ -10,10 +10,12 @@ const Admin = ({ handleLogout }) => {
   };
 
   return (
-    <div>
-      <h1>Admin Page</h1>
-      <button onClick={handleLogoutClick}>Logout</button>
-    </div>
+    <>
+      <div>
+        <h1>Admin Page</h1>
+        <button onClick={handleLogoutClick}>Logout</button>
+      </div>
+    </>
   );
 };
 

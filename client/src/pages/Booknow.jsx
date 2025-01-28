@@ -7,7 +7,7 @@ const BookNow = () => {
   useEffect(() => {
     const fetchSchedule = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:5070/Booknow");
+        const response = await axios.get("http://127.0.0.1:5070/booknow");
         setSchedule(response.data);
       } catch (error) {
         console.error("Error fetching schedule:", error);

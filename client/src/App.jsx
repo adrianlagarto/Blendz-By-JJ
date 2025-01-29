@@ -15,6 +15,7 @@ import Logout from "./pages/Logout";
 import BookNow from "./pages/Booknow";
 import Admin from "./pages/Admin/Admin";
 import Navbar from "./components/Navbar";
+import AdminNavbar from "./components/AdminNavbar";
 import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
@@ -46,7 +47,8 @@ function App() {
     <>
       {/*Add navbar to all routes*/}
       <Router>
-        <Navbar /> {/* Navbar component */}
+        {isAdmin ? <AdminNavbar /> : <Navbar />}{" "}
+        {/* Conditionally render AdminNavbar */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

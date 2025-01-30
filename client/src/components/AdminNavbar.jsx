@@ -1,26 +1,48 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import "./Navbar.scss"; // Import the same SCSS file for styling
 
 const AdminNavbar = () => {
-  const location = useLocation();
-
   return (
-    <nav>
-      {location.pathname === "/admin" ? (
-        <div>
-          {/* Admin Navbar */}
-          <a href="/admin/dashboard">Dashboard</a>
-          <a href="/admin/settings">Settings</a>
-          <a href="/admin/profile">Profile</a>
-        </div>
-      ) : (
-        <div>
-          {/* Default Navbar */}
-          <a href="/">Home</a>
-          <a href="/about">About</a>
-          <a href="/contact">Contact</a>
-        </div>
-      )}
+    <nav className="navbar">
+      <div className="navbar__logo">
+        <Link
+          to="/admin/dashboard"
+          className="navbar__link"
+          aria-label="Dashboard"
+        >
+          <i className="fas fa-tools"></i> Admin Dashboard
+        </Link>
+      </div>
+      <ul className="navbar__menu">
+        <li className="navbar__item">
+          <Link
+            to="/admin/dashboard"
+            className="navbar__link"
+            aria-label="Dashboard"
+          >
+            Dashboard
+          </Link>
+        </li>
+        <li className="navbar__item">
+          <Link
+            to="/admin/settings"
+            className="navbar__link"
+            aria-label="Settings"
+          >
+            Settings
+          </Link>
+        </li>
+        <li className="navbar__item">
+          <Link
+            to="/admin/profile"
+            className="navbar__link"
+            aria-label="Profile"
+          >
+            Profile
+          </Link>
+        </li>
+      </ul>
     </nav>
   );
 };

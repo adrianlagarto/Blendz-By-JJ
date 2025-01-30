@@ -12,7 +12,7 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return f'<User {self.username}>'
 
-# Booking Appointment
+# Booking Appointment Client
 class Appointment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(50), nullable=False)
@@ -45,3 +45,15 @@ class AdminService(db.Model):
 
     def __repr__(self):
         return f'<Service {self.service_type}>'
+
+# Admin controls their availability/time of their service
+class ScheduleAvailability(db.Model):#
+    id = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.String(50), nullable=False)
+    start_time = db.Column(db.String(50), nullable=False)
+    end_time = db.Column(db.String(50), nullable=False)
+    is_available = db.Column(db.Boolean, default=True)
+
+    def __repr__(self):
+        return f'<ScheduleAvailability {self.date} {self.start_time}-{self.end_time}>'
+    

@@ -4,6 +4,7 @@ from werkzeug.security import check_password_hash
 from models import User
 from flask_cors import CORS, cross_origin
 
+
 Login = Blueprint('Login', __name__)
 CORS(Login, resources={r"/*": {"origins": "*"}})  # Enable CORS for this blueprint
 

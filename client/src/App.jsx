@@ -45,9 +45,9 @@ function App() {
 
   return (
     <>
-      {/*Add navbar to all routes*/}
+      {/* Add navbar to all routes*/}
       <Router>
-        {isAdmin ? <AdminNavbar /> : <Navbar />}{" "}
+        {!isAdmin ? <AdminNavbar /> : <Navbar />}{" "}
         {/* Conditionally render AdminNavbar */}
         <Routes>
           <Route path="/" element={<Home />} />

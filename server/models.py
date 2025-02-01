@@ -57,3 +57,5 @@ class ScheduleAvailability(db.Model):#
     def __repr__(self):
         return f'<ScheduleAvailability {self.date} {self.start_time}-{self.end_time}>'
     
+
+    

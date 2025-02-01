@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import ClientReview from "../components/ClientReview";
+//import ClientReview from "/components/ClientReview/ClientReview";
+import "./Home.scss"; // Import SCSS file
+//import barberChair from "../../assets/barber-chair.jpg"; // Example image
 
 const Home = () => {
   const [message, setMessage] = useState("");
@@ -29,31 +31,40 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Home Page</h1>
-      <p>Welcome to the Home page!</p>
-      <p>Message from Backend: {message}</p>
+    <div className="home-page">
+      <header className="hero-section">
+        <div className="hero-content">
+          <h1>Welcome to Modern Cuts Barbershop</h1>
+          <p>Your style, our passion.</p>
+          <button className="cta-button">Book Now</button>
+        </div>
+        <img src={barberChair} alt="Barber Chair" className="hero-image" />
+      </header>
 
-      <h2>Availability</h2>
-      <ul>
-        {Object.entries(availability).map(([day, hours]) => (
-          <li key={day}>
-            <strong>{day}:</strong> {hours}
-          </li>
-        ))}
-      </ul>
+      <section className="availability-section">
+        <h2>Our Availability</h2>
+        <ul>
+          {Object.entries(availability).map(([day, hours]) => (
+            <li key={day}>
+              <strong>{day}:</strong> {hours}
+            </li>
+          ))}
+        </ul>
+      </section>
 
-      <h2>Client Reviews</h2>
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
-        {reviews.map((review, index) => (
-          <ClientReview
-            key={index}
-            clientName={review.clientName}
-            comment={review.comment}
-            rating={review.rating}
-          />
-        ))}
-      </div>
+      <section className="reviews-section">
+        <h2>What Our Clients Say</h2>
+        <div className="review-list">
+          {reviews.map((review, index) => (
+            <ClientReview
+              key={index}
+              clientName={review.clientName}
+              comment={review.comment}
+              rating={review.rating}
+            />
+          ))}
+        </div>
+      </section>
     </div>
   );
 };

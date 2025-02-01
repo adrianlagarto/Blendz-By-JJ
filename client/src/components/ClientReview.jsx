@@ -6,9 +6,7 @@ const ClientReview = ({ clientName, comment, rating }) => {
     <div className="client-review">
       <h3>{clientName}</h3>
       <p>{comment}</p>
-      <p>
-        <strong>Rating:</strong> {rating} / 5
-      </p>
+      <div className="rating">Rating: {rating}/5</div>
     </div>
   );
 };

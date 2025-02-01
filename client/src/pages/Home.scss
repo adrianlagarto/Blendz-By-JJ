@@ -1,0 +1,90 @@
+.home-page {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: "Arial", sans-serif;
+
+  .hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+
+    .hero-content {
+      max-width: 50%;
+
+      h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+      }
+
+      .cta-button {
+        background-color: #ff9800;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1em;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #e68900;
+        }
+      }
+    }
+
+    .hero-image {
+      max-width: 45%;
+      border-radius: 10px;
+    }
+  }
+
+  .availability-section {
+    margin-bottom: 40px;
+
+    h2 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+
+      li {
+        background-color: #f9f9f9;
+        margin: 10px 0;
+        padding: 15px;
+        border-radius: 5px;
+        font-size: 1em;
+        color: #555;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  .reviews-section {
+    h2 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+
+    .review-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+  }
+}

@@ -34,11 +34,14 @@ const Home = () => {
     <div className="home-page">
       <header className="hero-section">
         <div className="hero-content">
-          <h1>Welcome to Modern Cuts Barbershop</h1>
-          <p>Your style, our passion.</p>
+          <h1>Lorem ipsum, dolor sit amet consectetur</h1>
+          <p>
+            Excepturi molestias voluptates ratione minus nemo incidunt molestiae
+            ab assumenda facere, quaerat odit provident necessitatibus?
+          </p>
           <button className="cta-button">Book Now</button>
         </div>
-        <img src={barberChair} alt="Barber Chair" className="hero-image" />
+        {/* <img src={barberChair} alt="Barber Chair" className="hero-image" /> */}
       </header>
 
       <section className="availability-section">

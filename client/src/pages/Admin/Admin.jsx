@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "./Admin.scss"; // Import the SCSS file
 
 const Admin = ({ handleLogout }) => {
   const navigate = useNavigate();
@@ -10,12 +11,12 @@ const Admin = ({ handleLogout }) => {
   };
 
   return (
-    <>
-      <div>
-        <h1>Admin Page</h1>
-        <button onClick={handleLogoutClick}>Logout</button>
-      </div>
-    </>
+    <div className="adminContainer">
+      <h1>Admin Page</h1>
+      <button className="logoutButton" onClick={handleLogoutClick}>
+        Logout
+      </button>
+    </div>
   );
 };
 

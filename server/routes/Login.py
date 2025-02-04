@@ -21,13 +21,11 @@ def login():
     return jsonify({"error": "Invalid credentials"}), 401
 
 @Login.route('/logout', methods=['POST'])
-@cross_origin()  # Enable CORS for this route
+@cross_origin(supports_credentials=True)
 @login_required
 def logout():
     try:
-        print(f"Logging out user: {current_user.username}")
         logout_user()
-        print("User logged out successfully")
         return jsonify({"message": "Logged out successfully"}), 200
     except Exception as e:
         print(f"Error during logout: {e}")

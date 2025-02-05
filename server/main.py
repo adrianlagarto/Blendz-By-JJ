@@ -11,6 +11,7 @@ from routes.Service import Service
 from routes.Login import Login
 from routes.Contact import Contact
 from routes.Booknow import Booknow
+from routes.CheckSession import CheckSession
 from models import db, User, Appointment, ContactForm, AdminService
 from dotenv import load_dotenv
 from datetime import timedelta
@@ -43,6 +44,7 @@ app.register_blueprint(Contact)
 app.register_blueprint(Login)
 app.register_blueprint(Booknow)
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -60,15 +62,15 @@ admin.add_view(AdminModelView(User, db.session))
 admin.add_view(AdminModelView(Appointment, db.session))
 admin.add_view(AdminModelView(ContactForm, db.session))
 
-@app.route('/check_session', methods=['GET'])
-@cross_origin(supports_credentials=True)
-@login_required
-def check_session():
-    return jsonify({
-        "is_admin": current_user.is_admin,
-        "username": current_user.username
-    }), 200
-    
+# @app.route('/check_session', methods=['GET'])
+# @cross_origin(supports_credentials=True)
+# @login_required
+# def check_session():
+#     return jsonify({
+#         "is_admin": current_user.is_admin,
+#         "username": current_user.username
+#     }), 200
+app.register_blueprint(CheckSession)
     
 if __name__ == "__main__":
     app.run(debug=True, port=5070)

@@ -12,9 +12,16 @@ const Admin = ({ handleLogout }) => {
           credentials: "include", // Include cookies
         });
         if (response.ok) {
-          const data = await response.json();
-          setIsAdmin(data.is_admin);
+          const contentType = response.headers.get("content-type");
+          if (contentType && contentType.includes("application/json")) {
+            const data = await response.json();
+            setIsAdmin(data.is_admin);
+          } else {
+            console.error("Expected JSON, but got:", contentType);
+            navigate("/login");
+          }
         } else {
+          console.error("Server responded with status:", response.status);
           navigate("/login");
         }
       } catch (error) {

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import styles from "./Login.module.scss"; // Import the SCSS module
 
 const Login = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
@@ -41,9 +42,9 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className={styles.loginContainer}>
       <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
+      <form className={styles.loginForm} onSubmit={handleSubmit}>
         <input
           type="text"
           name="username"
@@ -60,7 +61,7 @@ const Login = () => {
         />
         <button type="submit">Login</button>
       </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className={styles.errorMessage}>{error}</p>}
     </div>
   );
 };

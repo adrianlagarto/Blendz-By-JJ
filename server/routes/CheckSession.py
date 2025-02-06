@@ -1,7 +1,6 @@
 from flask import Blueprint, jsonify
-from flask_login import current_user, login_required
+from flask_login import login_required, current_user
 from flask_cors import cross_origin
-# from main import app  # Import your Flask app instance
 
 CheckSession = Blueprint('CheckSession', __name__)
 
@@ -13,3 +12,4 @@ def check_session():
         "is_admin": current_user.is_admin,
         "username": current_user.username
     }), 200
+    

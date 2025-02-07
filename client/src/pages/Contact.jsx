@@ -3,9 +3,9 @@ import "./Contact.scss";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: "",
+    first_name: "",
+    last_name: "",
     email: "",
-    phone: "",
     message: "",
   });
 
@@ -17,18 +17,33 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you can handle form submission, e.g., send data to an API
-    console.log("Form Data Submitted:", formData);
-    alert("Thank you for contacting us! We'll get back to you soon.");
-    // Reset form after submission
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-    });
+    try {
+      const response = await fetch("http://127.0.0.1:5070/Contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Form Data Submitted:", result);
+        alert("Thank you for contacting us! We'll get back to you soon.");
+        // Reset form after submission
+        setFormData({
+          first_name: "",
+          last_name: "",
+          email: "",
+          message: "",
+        });
+      } else {
+        console.error("Error submitting form:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
   };
 
   return (
@@ -37,14 +52,28 @@ const Contact = () => {
       <p className="subHeading">Get in touch with us through this page.</p>
       <form onSubmit={handleSubmit} className="form">
         <div className="formGroup">
-          <label htmlFor="name" className="label">
-            Name:
+          <label htmlFor="first_name" className="label">
+            First Name:
           </label>
           <input
             type="text"
-            id="name"
-            name="name"
-            value={formData.name}
+            id="first_name"
+            name="first_name"
+            value={formData.first_name}
+            onChange={handleChange}
+            required
+            className="input"
+          />
+        </div>
+        <div className="formGroup">
+          <label htmlFor="last_name" className="label">
+            Last Name:
+          </label>
+          <input
+            type="text"
+            id="last_name"
+            name="last_name"
+            value={formData.last_name}
             onChange={handleChange}
             required
             className="input"
@@ -61,19 +90,6 @@ const Contact = () => {
             value={formData.email}
             onChange={handleChange}
             required
-            className="input"
-          />
-        </div>
-        <div className="formGroup">
-          <label htmlFor="phone" className="label">
-            Phone Number (optional):
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
             className="input"
           />
         </div>

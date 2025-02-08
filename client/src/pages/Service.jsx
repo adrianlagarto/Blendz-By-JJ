@@ -8,7 +8,7 @@ const Service = () => {
   const fetchServices = async () => {
     try {
       const response = await axios.get("http://127.0.0.1:5070/Service");
-      setServices(response.data.services); // Access the 'services' array
+      setServices(response.data.services);
     } catch (error) {
       console.error("Error fetching services:", error);
     }

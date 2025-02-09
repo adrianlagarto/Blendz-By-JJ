@@ -12,3 +12,6 @@ database.db
 
 # demo
 server/create_admin.py
+
+# logging
+server/login.log

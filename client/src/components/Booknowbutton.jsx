@@ -1,4 +1,5 @@
 import React from "react";
+import "./Booknowbutton.scss";
 import { useNavigate } from "react-router-dom";
 
 const BookNowButton = () => {
@@ -8,7 +9,15 @@ const BookNowButton = () => {
     navigate("/booknow");
   };
 
-  return <button onClick={handleClick}>Book Now</button>;
+  return (
+    <button
+      className="book-now-button"
+      aria-label="Book Now"
+      onClick={handleClick}
+    >
+      Book Now
+    </button>
+  );
 };
 
 export default BookNowButton;

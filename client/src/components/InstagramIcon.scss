@@ -1,0 +1,10 @@
+.instagram-icon {
+  color: #000; // Default color (black)
+  font-size: 1.5rem; // Adjust size as needed
+  transition: color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    color: #e4405f; // Instagram brand color on hover
+    transform: scale(1.1); // Slightly enlarge on hover
+  }
+}

@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import BookNowButton from "./BookNowButton"; // Import the BookNowButton component
-import "./Navbar.scss"; // Import the SCSS file
+import BookNowButton from "./BookNowButton";
+import InstagramIcon from "./InstagramIcon";
+import "./Navbar.scss";
 
 const Navbar = () => {
   return (
@@ -46,6 +47,9 @@ const Navbar = () => {
         </li>
         <li className="navbar__menu__item">
           <BookNowButton /> {/* Add the BookNowButton here */}
+        </li>
+        <li className="navbar__menu__item">
+          <InstagramIcon /> {/* Add the InstagramIcon here */}
         </li>
       </ul>
     </nav>

@@ -28,6 +28,7 @@ const Login = () => {
       );
       if (response.status === 200) {
         if (response.data.is_admin) {
+          console.log("checking_log_in");
           navigate("/admin"); // Redirect to the admin page if the user is an admin
         } else {
           navigate("/"); // Redirect to a different page if the user is not an admin

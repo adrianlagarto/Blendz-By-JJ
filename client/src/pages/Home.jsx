@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 //import ClientReview from "/components/ClientReview/ClientReview";
 import "./Home.scss"; // Import SCSS file
+import ContactNumber from "../components/ContactNumber";
 //import barberChair from "../../assets/barber-chair.jpg"; // Example image
 
 const Home = () => {
@@ -68,6 +69,7 @@ const Home = () => {
           ))}
         </div>
       </section>
+      <ContactNumber phoneNumber="(123) 456-7890" />
     </div>
   );
 };
